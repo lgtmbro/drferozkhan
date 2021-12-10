@@ -16,6 +16,8 @@ function WhatsAppPage({ setUserInfo }) {
         date,
       });
 
+      document.title = "Dr Feroz Khan - Data Complete";
+
       nav("/appointment/thanks");
     }
   };
