@@ -12,6 +12,8 @@ function WhatsAppComplete({ userInfo }) {
         .toLocaleTimeString()
         .substr(0, 5)}.`;
 
+      document.title = "Dr Feroz Khan - WA Message Sent";
+
       window.open(
         `https://wa.me/+27710101786?text=${message.replace(" ", "%20")}`,
         "_wa_doc"
