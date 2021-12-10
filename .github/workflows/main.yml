@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          always-auth: false
+
+      - uses: actions/checkout@v2
+
+      - name: Installing Project
+        run: npm i
+
+      - name: Building Project
+        run: npm run build
+
+      - name: Setup SSH
+        run: |
+          mkdir ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 400 ~/.ssh/id_rsa
+
+      - name: Copy build to server
+        run: |
+          rsync --version
+          ssh ftpu@143.47.234.47 'rm -rf /var/www/drferozkhan.co.za/*'
+          rsync -vrhog --chown=ftpu:www-data ./build/* ftpu@143.47.234.47:/var/www/drferozkhan.co.za
