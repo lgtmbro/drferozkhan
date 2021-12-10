@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { ReactComponent as WhatsAppLogo } from "./img/whatsapp-white.svg";
+import { Link, useNavigate } from "react-router-dom";
 
-function WhatsAppPage({ showWA }) {
+function WhatsAppPage() {
   const [name, setName] = useState();
   const [time, setTime] = useState();
+  const nav = useNavigate();
 
   const sendRequest = () => {
     const date = new Date(time);
@@ -13,16 +15,12 @@ function WhatsAppPage({ showWA }) {
         .toLocaleTimeString()
         .substr(0, 5)}.`;
 
-      window.dataLayer.push({
-        event: "whatsapp_clicks",
-      });
-
       window.open(
         `https://wa.me/+27710101786?text=${message.replace(" ", "%20")}`,
         "_wa_doc"
       );
 
-      showWA(false);
+      nav("/whatsapp/thanks");
     }
   };
 
@@ -33,7 +31,13 @@ function WhatsAppPage({ showWA }) {
         className="h-fit w-full md:w-96 md:mx-0 p-3 md:p-5 rounded-md grid"
       >
         <div className="grid justify-items-end">
-          <div onClick={() => showWA(false)} className="cursor-pointer">
+          <Link
+            to="/"
+            onClick={() => {
+              // func heere
+            }}
+            className="cursor-pointer"
+          >
             <svg
               style={{ fill: "#26bdb6" }}
               xmlns="http://www.w3.org/2000/svg"
@@ -43,16 +47,16 @@ function WhatsAppPage({ showWA }) {
             >
               <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
             </svg>
-          </div>
+          </Link>
         </div>
-        <label className="font-bold">Full Name</label>
+        <label className="font-bold my-2">Full Name</label>
         <input
           type="text"
           onChange={(e) => setName(e.target.value)}
           className="rounded-md border border-black text-xl p-1 mb-4"
           placeholder="Full Name"
         />
-        <label className="font-bold">Appointment Date and Time</label>
+        <label className="font-bold my-2">Appointment Date and Time</label>
         <input
           type="datetime-local"
           onChange={(e) => setTime(e.target.value)}

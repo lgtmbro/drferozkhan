@@ -17,12 +17,15 @@ function IntroductionCard() {
               <h1 className="text-l md:text-xl">MP Nr.: MP0600849</h1>
             </div>
           </div>
-          <p className="text-l md:text-xl pt-3 md:pt-0">
-            Dr Feroz Khan studied at Stellenbosch University, where he qualified
-            in 2003. His post graduate clinical experience in Western Cape. Dr
-            Khan relocated to KwaZulu-Natal where he worked at St Andrews
-            Hospital as a Medical Officer until 2006. Dr Khan established a
-            private GP practice in Port Shepstone 2006.
+          <p className="text-l pt-3 md:pt-0">
+            Dr Feroz Khan studied at the University of Stellenbosch, qualifying
+            in 2003, gaining post graduate clinical experience in the Western
+            Cape. Relocating to KwaZulu-Natal, he worked as a Hospital Medical
+            Officer at St Andrews Hospital. In 2006 he returned to his home town
+            of Port Shepstone, opening his own practice as a GP. Born into a
+            family of medical doctors, his thirst for knowledge and compassion
+            have gained him a wealth of experience both in and outside of the
+            operating theater.
           </p>
         </div>
         <div

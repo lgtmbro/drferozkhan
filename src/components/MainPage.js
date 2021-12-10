@@ -4,7 +4,7 @@ import IntroductionCard from "./introductionCard";
 import ServicesCard from "./ServicesCard";
 import StickyFooter from "./StickyFooter";
 
-function MainPage({ showWA }) {
+function MainPage() {
   return (
     <main className="flex flex-col h-screen md:max-w-screen-lg mx-auto">
       <div className="flex-grow">
@@ -12,7 +12,7 @@ function MainPage({ showWA }) {
         <ServicesCard />
         <ContactCard />
       </div>
-      <StickyFooter showWA={showWA} />
+      <StickyFooter />
     </main>
   );
 }
