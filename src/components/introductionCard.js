@@ -13,8 +13,8 @@ function IntroductionCard() {
             <div className="ml-4">
               <h1 className="text-2xl font-bold">Dr Feroz Khan</h1>
               <h1 className="text-l md:text-xl">General Practitioner</h1>
-              <h1 className="text-l md:text-xl">Practice Nr.: 0252786</h1>
-              <h1 className="text-l md:text-xl">MP Nr.: MP0600849</h1>
+              <h1 className="text-l md:text-xl">Practice Nr: 0252786</h1>
+              <h1 className="text-l md:text-xl">MP Nr: MP0600849</h1>
             </div>
           </div>
           <p className="text-l pt-3 md:pt-0">
