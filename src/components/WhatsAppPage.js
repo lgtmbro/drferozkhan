@@ -48,18 +48,22 @@ function WhatsAppPage({ setUserInfo }) {
           </Link>
         </div>
         <label className="font-bold my-2">Full Name</label>
-        <input
-          type="text"
-          onChange={(e) => setName(e.target.value)}
-          className="rounded-md border border-black text-xl p-1 mb-4"
-          placeholder="Full Name"
-        />
+        <div style={{ border: "solid 3px #26bdb6", borderRadius: "5px" }}>
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            className="rounded-md text-xl p-1 w-full bg-white"
+            placeholder="Full Name"
+          />
+        </div>
         <label className="font-bold my-2">Appointment Date and Time</label>
-        <input
-          type="datetime-local"
-          onChange={(e) => setTime(e.target.value)}
-          className="rounded-md border border-black text-xl p-1 mb-4 bg-white w-full"
-        />
+        <div style={{ border: "solid 3px #26bdb6", borderRadius: "5px" }}>
+          <input
+            type="datetime-local"
+            onChange={(e) => setTime(e.target.value)}
+            className="rounded-md text-xl p-1 bg-white w-full"
+          />
+        </div>
         <button
           onClick={sendRequest}
           style={{ backgroundColor: "#4e6366" }}

@@ -8,9 +8,18 @@ function WhatsAppComplete({ userInfo }) {
     if (userInfo?.date && userInfo?.name) {
       const message = `Hi there, my name is ${
         userInfo.name
-      } I would like to make an appointment for ${userInfo.date.toDateString()} at ${userInfo.date
-        .toLocaleTimeString()
-        .substr(0, 5)}.`;
+      } I would like to make an appointment for ${userInfo.date.toLocaleString(
+        "en-US",
+        {
+          hour: "numeric",
+          minute: "numeric",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          weekday: "long",
+          hour12: true,
+        }
+      )}.`;
 
       document.title = "Dr Feroz Khan - WA Message Sent";
 
