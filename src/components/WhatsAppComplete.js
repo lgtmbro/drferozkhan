@@ -6,7 +6,7 @@ function WhatsAppComplete({ userInfo }) {
 
   useEffect(() => {
     if (userInfo?.date && userInfo?.name) {
-      const message = `Hi There, My name is ${
+      const message = `Hi there, my name is ${
         userInfo.name
       } I would like to make an appointment for ${userInfo.date.toDateString()} at ${userInfo.date
         .toLocaleTimeString()
