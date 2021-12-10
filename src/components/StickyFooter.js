@@ -6,7 +6,7 @@ function StickyFooter() {
   return (
     <footer className="sticky bottom-0 w-full md:px-4">
       <Link
-        to="/whatsapp"
+        to="/appointment"
         className="flex justify-around items-center bg-green-400 w-full h-20 md:rounded-tl-md md:rounded-tr-md"
       >
         <div className="flex">

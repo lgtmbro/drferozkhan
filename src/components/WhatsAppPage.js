@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as WhatsAppLogo } from "./img/whatsapp-white.svg";
 import { Link, useNavigate } from "react-router-dom";
 
-function WhatsAppPage() {
+function WhatsAppPage({ setUserInfo }) {
   const [name, setName] = useState();
   const [time, setTime] = useState();
   const nav = useNavigate();
@@ -11,16 +11,12 @@ function WhatsAppPage() {
     const date = new Date(time);
 
     if (date.toJSON() && name) {
-      const message = `Hi There, My name is ${name} I would like to make an appointment for ${date.toDateString()} at ${date
-        .toLocaleTimeString()
-        .substr(0, 5)}.`;
+      setUserInfo({
+        name,
+        date,
+      });
 
-      window.open(
-        `https://wa.me/+27710101786?text=${message.replace(" ", "%20")}`,
-        "_wa_doc"
-      );
-
-      nav("/whatsapp/thanks");
+      nav("/appointment/thanks");
     }
   };
 
@@ -68,7 +64,7 @@ function WhatsAppPage() {
           className="flex text-white font-bold py-3 px-4 m-3 rounded-full justify-center"
         >
           <WhatsAppLogo className="w-6 mr-2" />
-          Send Booking Request
+          Send appointment Request
         </button>
       </div>
     </div>
