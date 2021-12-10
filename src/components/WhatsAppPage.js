@@ -13,6 +13,10 @@ function WhatsAppPage({ showWA }) {
         .toLocaleTimeString()
         .substr(0, 5)}.`;
 
+      window.dataLayer.push({
+        event: "whatsapp_clicks",
+      });
+
       window.open(
         `https://wa.me/+27710101786?text=${message.replace(" ", "%20")}`,
         "_wa_doc"
