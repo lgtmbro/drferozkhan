@@ -16,7 +16,11 @@ function MainPage() {
             For all official information and updates regarding the COVID-19
             pandemic please visit the South African Department of Health's
             website at:
-            <a href="https://www.sacoronavirus.co.za" target="_sa_covid">
+            <a
+              className="underline"
+              href="https://www.sacoronavirus.co.za"
+              target="_sa_covid"
+            >
               {" "}
               sacoronavirus.co.za
             </a>
