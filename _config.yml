@@ -1,0 +1,20 @@
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "drferozkhan.co.za" # the base hostname & protocol for your site, e.g. http://example.com
+
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: CI
 
 on:
   push:
@@ -7,32 +7,39 @@ on:
     branches: [main]
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
-        with:
-          always-auth: false
-
       - uses: actions/checkout@v2
 
-      - name: Installing Project
-        run: npm i
-
-      - name: Building Project
-        run: npm run build
-
-      - name: Setup SSH
+      - name: Set write permissions for build
         run: |
-          mkdir ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-          chmod 400 ~/.ssh/id_rsa
+          mkdir .jekyll-cache build
+          chmod 777 ./Gemfile.lock ./.jekyll-cache ./build
 
-      - name: Copy build to server
+      - name: Docker, jekyll build
+        run: docker run --rm --volume="$PWD:/srv/jekyll" jekyll/builder:latest jekyll b -d build
+
+      - name: Deploy to site branch
         run: |
-          rsync --version
-          ssh ftpu@143.47.234.47 'rm -rf /var/www/drferozkhan.co.za/*'
-          rsync -vrhog --chown=ftpu:www-data ./build/* ftpu@143.47.234.47:/var/www/drferozkhan.co.za
+          git config --global user.email "GHactions@howzitcal.xyz"
+          git config --global user.name "CDF GA DEPLOY"
+
+          git clone -b site https://.:${{ secrets.PAT }}@github.com/${{github.repository}} target
+
+          if [ -f ./target/CNAME ];
+          then
+            cp ./target/CNAME ./build/
+          fi
+          rm -vrf ./target/*
+          cp -vrf ./build/* ./target
+
+          (
+            curr_date=$(date +'%m/%d/%Y')
+            cd ./target
+
+            git add .
+            git commit -m "Automatic publish ${curr_date}"
+            git push -fq origin site
+          )
